@@ -1,0 +1,14 @@
+Projeto com bases da Zup 
+
+criar camada bronze e silver 
+
+quais dados temos?
+
+quais tratamentos são necessários?
+
+1. EDA
+2. ETL
+
+Criando bucket s3 para armazenamento em camadas
+Carredaor os parquets para a camada bronze (manualmente, mas um próximo passo é criar um script para isso)
+Ler dados s3, catalogar dados e criar tabela
