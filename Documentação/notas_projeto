@@ -11,4 +11,11 @@ quais tratamentos são necessários?
 
 Criando bucket s3 para armazenamento em camadas
 Carredaor os parquets para a camada bronze (manualmente, mas um próximo passo é criar um script para isso)
+
 Ler dados s3, catalogar dados e criar tabela
+Glue Crawler para ler os dados no S3, catalogá-los e trazer esses dados em tabelas par ao Glue poder acessá-los
+
+O AWS Glue Crawler cria e atualiza automaticamente o esquema dos dados armazenados, enquanto o AWS Glue Data Catalog organiza e armazena os metadados, permitindo consultas mais rápidas e eficientes.
+
+Ajustar a permissão do glue
+A policy atual permite apenas colocar e tirar objetos do bucket, vamos implementar mais ações

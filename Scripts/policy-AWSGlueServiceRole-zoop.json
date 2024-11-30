@@ -1,0 +1,36 @@
+{
+	"Version": "2012-10-17", 
+	// Versão do formato da política. "2012-10-17" é a versão atual padrão para políticas IAM.
+	
+	"Statement": [ 
+		// Lista de declarações que definem permissões.
+		{
+			"Effect": "Allow", 
+			// Define que o efeito da política é permitir (Allow) as ações descritas.
+
+			"Action": [ 
+				// Lista das ações permitidas para os recursos especificados.
+				"s3:GetObject", 
+				// Permite acessar (ler) objetos armazenados no bucket S3.
+				"s3:PutObject", 
+				// Permite gravar (criar ou substituir) objetos no bucket S3.
+				"s3:GetObjectAcl", 
+				// Permite visualizar as permissões de controle de acesso (ACL) de objetos no bucket S3.
+				"s3:PutObjectAcl", 
+				// Permite alterar as permissões de controle de acesso (ACL) de objetos no bucket S3.
+				"s3:DeleteObject", 
+				// Permite excluir objetos armazenados no bucket S3.
+				"iam:PassRole" 
+				// Permite que a role especificada seja passada para outros serviços (por exemplo, para o AWS Glue).
+			],
+
+			"Resource": [ 
+				// Lista de recursos nos quais as ações são permitidas.
+				"arn:aws:s3:::projetos-eng-analytics-zoop/*", 
+				// Especifica que as ações relacionadas ao S3 (ler, gravar, etc.) são permitidas para todos os objetos no bucket `projetos-eng-analytics-zoop`.
+				"arn:aws:iam::761018874983:role/service-role/AWSGlueServiceRole-zoop" 
+				// Especifica que a ação `iam:PassRole` é permitida para a role do Glue chamada `AWSGlueServiceRole-zoop`.
+			]
+		}
+	]
+}
