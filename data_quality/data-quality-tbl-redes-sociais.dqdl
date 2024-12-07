@@ -1,0 +1,28 @@
+Rules = [
+    # Verifica se o número de linhas no conjunto de dados está entre 5.000 e 20.000.
+    RowCount BETWEEN 5000 AND 20000,
+
+    # Garante que a coluna "plataforma" não tenha valores nulos.
+    IsComplete "plataforma",
+
+    # Verifica se os valores na coluna "plataforma" pertencem ao conjunto especificado (X (Twitter), Facebook, Instagram, TikTok).
+    ColumnValues "plataforma" IN ["X (Twitter)", "Facebook", "Instagram", "TikTok"],
+
+    # Garante que o comprimento do texto na coluna "plataforma" esteja entre 5 e 12 caracteres.
+    ColumnLength "plataforma" BETWEEN 5 AND 12,
+
+    # Garante que a coluna "categoria_produto" não tenha valores nulos.
+    IsComplete "categoria_produto",
+
+    # Verifica se os valores na coluna "categoria_produto" pertencem ao conjunto especificado (Eletrodomésticos, Eletrônicos).
+    ColumnValues "categoria_produto" IN ["Eletrodomésticos", "Eletrônicos"],
+
+    # Garante que o comprimento do texto na coluna "categoria_produto" esteja entre 10 e 17 caracteres.
+    ColumnLength "categoria_produto" BETWEEN 10 AND 17,
+
+    # Garante que a coluna "comentario" não tenha valores nulos.
+    IsComplete "comentario",
+
+    # Garante que o comprimento do texto na coluna "comentario" esteja entre 38 e 82 caracteres.
+    ColumnLength "comentario" BETWEEN 38 AND 82
+]

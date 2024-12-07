@@ -1,0 +1,92 @@
+Rules = [
+
+    # Verifica se o número total de linhas no conjunto de dados está entre 570 e 2280.
+    RowCount BETWEEN 570 AND 2280,
+
+    # Garante que a coluna "id_estoque" não tenha valores nulos.
+    IsComplete "id_estoque",
+
+    # Verifica se o desvio padrão dos valores na coluna "id_estoque" está entre 312.64 e 345.54.
+    StandardDeviation "id_estoque" BETWEEN 312.64 AND 345.54,
+
+    # Garante que mais de 95% dos valores na coluna "id_estoque" sejam únicos.
+    Uniqueness "id_estoque" > 0.95,
+
+    # Garante que os valores na coluna "id_estoque" não sejam maiores que 1139.
+    ColumnValues "id_estoque" <= 1139,
+
+    # Garante que a coluna "id_produto" não tenha valores nulos.
+    IsComplete "id_produto",
+
+    # Verifica se os valores na coluna "id_produto" pertencem ao conjunto especificado.
+    ColumnValues "id_produto" IN ["28", "3", "29", "7", "18", "2", "27", "20", "0", "14", "25", "17", "1", "6", "21", "10", "5", "16", "24", "13", "26", "22", "9", "11", "15", "4", "23", "19", "8", "12"],
+
+    # Verifica se pelo menos 91% dos valores na coluna "id_produto" pertencem ao conjunto especificado.
+    ColumnValues "id_produto" IN ["28", "3", "29", "7", "18", "2", "27", "20", "0", "14", "25", "17", "1", "6", "21", "10", "5", "16", "24", "13", "26", "22", "9", "11", "15", "4", "23", "19"] WITH THRESHOLD >= 0.91,
+
+    # Verifica se o desvio padrão dos valores na coluna "id_produto" está entre 8.22 e 9.09.
+    StandardDeviation "id_produto" BETWEEN 8.22 AND 9.09,
+
+    # Garante que os valores na coluna "id_produto" não sejam maiores que 29.
+    ColumnValues "id_produto" <= 29,
+
+    # Garante que a coluna "produto" não tenha valores nulos.
+    IsComplete "produto",
+
+    # Verifica se o comprimento do texto na coluna "produto" está entre 5 e 23 caracteres.
+    ColumnLength "produto" BETWEEN 5 AND 23,
+
+    # Garante que a coluna "categoria_produto" não tenha valores nulos.
+    IsComplete "categoria_produto",
+
+    # Verifica se os valores na coluna "categoria_produto" pertencem ao conjunto especificado (Eletrodomésticos, Eletrônicos).
+    ColumnValues "categoria_produto" IN ["Eletrodomésticos", "Eletrônicos"],
+
+    # Verifica se o comprimento do texto na coluna "categoria_produto" está entre 10 e 17 caracteres.
+    ColumnLength "categoria_produto" BETWEEN 10 AND 17,
+
+    # Garante que a coluna "data" não tenha valores nulos.
+    IsComplete "data",
+
+    # Garante que a coluna "horario" não tenha valores nulos.
+    IsComplete "horario",
+
+    # Garante que a coluna "quantidade_em_estoque" não tenha valores nulos.
+    IsComplete "quantidade_em_estoque",
+
+    # Verifica se o desvio padrão dos valores na coluna "quantidade_em_estoque" está entre 102.61 e 113.41.
+    StandardDeviation "quantidade_em_estoque" BETWEEN 102.61 AND 113.41,
+
+    # Garante que os valores na coluna "quantidade_em_estoque" estejam entre 69 e 642.
+    ColumnValues "quantidade_em_estoque" BETWEEN 69 AND 642,
+
+    # Garante que a coluna "quantidade_novos_produtos" não tenha valores nulos.
+    IsComplete "quantidade_novos_produtos",
+
+    # Verifica se os valores na coluna "quantidade_novos_produtos" pertencem ao conjunto especificado.
+    ColumnValues "quantidade_novos_produtos" IN ["31", "17", "46", "45", "12", "18", "19", "43", "35", "50", "0", "16", "37", "33", "4", "29", "21", "38", "47", "13", "26", "20", "42", "14", "6", "32", "48", "10", "5", "11", "40", "8", "7", "2", "15", "23", "28", "3", "41", "30", "25", "39", "1", "9", "49", "24", "44", "22", "34", "36", "27"],
+
+    # Verifica se pelo menos 88% dos valores na coluna "quantidade_novos_produtos" pertencem ao conjunto especificado.
+    ColumnValues "quantidade_novos_produtos" IN ["31", "17", "46", "45", "12", "18", "19", "43", "35", "50", "0", "16", "37", "33", "4", "29", "21", "38", "47", "13", "26", "20", "42", "14", "6", "32", "48", "10", "5", "11", "40", "8", "7", "2", "15", "23", "28", "3", "41", "30", "25", "39", "1", "9"] WITH THRESHOLD >= 0.88,
+
+    # Verifica se o desvio padrão dos valores na coluna "quantidade_novos_produtos" está entre 14.06 e 15.54.
+    StandardDeviation "quantidade_novos_produtos" BETWEEN 14.06 AND 15.54,
+
+    # Garante que os valores na coluna "quantidade_novos_produtos" não sejam maiores que 50.
+    ColumnValues "quantidade_novos_produtos" <= 50,
+
+    # Garante que a coluna "quantidade_vendida" não tenha valores nulos.
+    IsComplete "quantidade_vendida",
+
+    # Verifica se os valores na coluna "quantidade_vendida" pertencem ao conjunto especificado.
+    ColumnValues "quantidade_vendida" IN ["19", "15", "16", "20", "18", "17", "13", "12", "21", "14", "22", "11", "25", "23", "24", "0", "10", "28", "8", "7", "26", "27", "9", "29", "30", "6", "5", "31", "35", "3", "32", "4", "34", "41", "36", "37", "33", "38", "2", "39", "43"],
+
+    # Verifica se pelo menos 88% dos valores na coluna "quantidade_vendida" pertencem ao conjunto especificado.
+    ColumnValues "quantidade_vendida" IN ["19", "15", "16", "20", "18", "17", "13", "12", "21", "14", "22", "11", "25", "23", "24", "0", "10", "28", "8", "7", "26", "27", "9"] WITH THRESHOLD >= 0.88,
+
+    # Verifica se o desvio padrão dos valores na coluna "quantidade_vendida" está entre 7.07 e 7.82.
+    StandardDeviation "quantidade_vendida" BETWEEN 7.07 AND 7.82,
+
+    # Garante que os valores na coluna "quantidade_vendida" não sejam maiores que 43.
+    ColumnValues "quantidade_vendida" <= 43
+]

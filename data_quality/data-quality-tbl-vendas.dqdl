@@ -1,0 +1,113 @@
+Rules = [
+    # Garante que a quantidade de linhas da base esteja dentro do intervalo esperado.
+    RowCount between 5000 and 20000,  
+    
+    # Verifica se a coluna "id_venda" está completa, sem valores nulos.
+    IsComplete "id_venda",
+    # Confere se o desvio padrão da coluna "id_venda" está dentro do intervalo esperado.
+    StandardDeviation "id_venda" between 2742.41 and 3031.09,
+    # Avalia se a coluna "id_venda" possui valores únicos em mais de 95% dos casos.
+    Uniqueness "id_venda" > 0.95,
+    # Garante que os valores em "id_venda" não ultrapassem 9999.
+    ColumnValues "id_venda" <= 9999,
+
+    # Confere se a coluna "data" está completa, sem valores nulos.
+    IsComplete "data",
+    # Confere se a coluna "horario" está completa, sem valores nulos.
+    IsComplete "horario",
+
+    # Verifica se a coluna "canal_venda" está completa e contém apenas valores permitidos.
+    IsComplete "canal_venda",
+    ColumnValues "canal_venda" in ["e-commerce","Loja 1","Loja 2"],
+    # Garante que os textos em "canal_venda" tenham um tamanho entre 5 e 11 caracteres.
+    ColumnLength "canal_venda" between 5 and 11,
+
+    # Garante que "origem_venda" esteja completa e contenha apenas os valores permitidos.
+    IsComplete "origem_venda",
+    ColumnValues "origem_venda" in ["Loja","Facebook","Instagram"],
+    # Garante que os textos em "origem_venda" tenham um tamanho entre 3 e 10 caracteres.
+    ColumnLength "origem_venda" between 3 and 10,
+
+    # Garante que "id_produto" esteja completa e contenha apenas os valores permitidos.
+    IsComplete "id_produto",
+    ColumnValues "id_produto" in ["4","3","11","20","21","15","29","5","16","23","13","24","1","9","12","2","0","8","18","28","22","14","26","27","7","19","17"],
+    # Exige que pelo menos 90% dos valores de "id_produto" estejam na lista permitida.
+    ColumnValues "id_produto" in ["4","3","11","20","21","15","29","5","16","23","13","24","1","9","12","2","0","8","18","28","22","14","26","27","7","19","17"] with threshold >= 0.9,
+    # Verifica se o desvio padrão de "id_produto" está dentro do intervalo esperado.
+    StandardDeviation "id_produto" between 8.23 and 9.1,
+    # Garante que os valores em "id_produto" não ultrapassem 29.
+    ColumnValues "id_produto" <= 29,
+
+    # Confere se "produto" está completa e se os textos têm tamanho entre 5 e 23 caracteres.
+    IsComplete "produto",
+    ColumnLength "produto" between 5 and 23,
+
+    # Garante que "categoria_produto" esteja completa e contenha apenas valores permitidos.
+    IsComplete "categoria_produto",
+    ColumnValues "categoria_produto" in ["Eletrodomésticos","Eletrônicos"],
+    # Garante que os textos em "categoria_produto" tenham tamanho entre 10 e 17 caracteres.
+    ColumnLength "categoria_produto" between 10 and 17,
+
+    # Garante que "preco_unitario" esteja completo e que seus valores estejam dentro do intervalo esperado.
+    IsComplete "preco_unitario",
+    StandardDeviation "preco_unitario" between 854.87 and 944.86,
+    ColumnValues "preco_unitario" between 88 and 3500,
+
+    # Verifica se "quantidade" está completa e contém apenas os valores permitidos.
+    IsComplete "quantidade",
+    ColumnValues "quantidade" in ["3","2","1"],
+    # Garante que os valores em "quantidade" não ultrapassem 3.
+    ColumnValues "quantidade" <= 3,
+
+    # Garante que "metodo_pagamento" esteja completa e contenha apenas valores permitidos.
+    IsComplete "metodo_pagamento",
+    ColumnValues "metodo_pagamento" in ["Cartão de débito","Cartão de crédito","PIX","Dinheiro"],
+    # Garante que os textos em "metodo_pagamento" tenham tamanho entre 2 e 18 caracteres.
+    ColumnLength "metodo_pagamento" between 2 and 18,
+
+    # Valida a completude de "id_cliente" e verifica o desvio padrão e limites de valores.
+    IsComplete "id_cliente",
+    StandardDeviation "id_cliente" between 137.47 and 151.95,
+    ColumnValues "id_cliente" <= 499,
+
+    # Confere a completude e o tamanho dos textos na coluna "nome_cliente".
+    IsComplete "nome_cliente",
+    ColumnLength "nome_cliente" between 6 and 27,
+
+    # Verifica a completude, valores permitidos e tamanho do texto de "genero_cliente".
+    IsComplete "genero_cliente",
+    ColumnValues "genero_cliente" in ["Feminino","Masculino"],
+    ColumnLength "genero_cliente" between 7 and 10,
+
+    # Valida a completude, limites, valores permitidos e desvio padrão de "idade_cliente".
+    IsComplete "idade_cliente",
+    ColumnValues "idade_cliente" in ["35","38","43","41","45","32","40","42","39","34","46","48","33","37","44","30","50","51","26","36","49","31","47","54","29","27","56","55","24","53","23","58"],
+    ColumnValues "idade_cliente" in ["35","38","43","41","45","32","40","42","39","34","46","48","33","37","44","30","50","51","26","36","49","31","47","54","29","27"] with threshold >= 0.9,
+    StandardDeviation "idade_cliente" between 9.06 and 10.02,
+    ColumnValues "idade_cliente" between 17 and 76,
+
+    # Garante a completude, valores permitidos e comprimento dos textos em "cidade_cliente".
+    IsComplete "cidade_cliente",
+    ColumnValues "cidade_cliente" in ["São Paulo","Rio de Janeiro","Brasília","Salvador","Belo Horizonte","Manaus","Fortaleza","Goiânia","Campo Grande","Porto Alegre","Guarulhos"],
+    ColumnValues "cidade_cliente" in ["São Paulo","Rio de Janeiro","Brasília","Salvador","Belo Horizonte","Manaus","Fortaleza","Goiânia","Campo Grande","Porto Alegre","Guarulhos"] with threshold >= 0.89,
+    ColumnLength "cidade_cliente" between 3 and 24,
+
+    # Valida completude, valores permitidos e tamanho fixo da coluna "uf_cliente".
+    IsComplete "uf_cliente",
+    ColumnValues "uf_cliente" in ["SP","RJ","MG","BA","PR","CE","PE","DF","GO","RS"],
+    ColumnValues "uf_cliente" in ["SP","RJ","MG","BA","PR","CE","PE","DF","GO"] with threshold >= 0.9,
+    ColumnLength "uf_cliente" = 2,
+
+    # Valida a completude, valores permitidos e comprimento dos textos de "regiao_cliente".
+    IsComplete "regiao_cliente",
+    ColumnValues "regiao_cliente" in ["Sudeste","Nordeste","Centro-Oeste","Sul"],
+    ColumnValues "regiao_cliente" in ["Sudeste","Nordeste","Centro-Oeste","Sul"] with threshold >= 0.93,
+    ColumnLength "regiao_cliente" between 2 and 13,
+
+    # Verifica a completude, valores permitidos e desvio padrão da coluna "avaliacao".
+    IsComplete "avaliacao",
+    ColumnValues "avaliacao" in ["5","4","3","2","1"],
+    ColumnValues "avaliacao" in ["5","4","3","2"] with threshold >= 0.94,
+    StandardDeviation "avaliacao" between 1.13 and 1.24,
+    ColumnValues "avaliacao" <= 5
+]
